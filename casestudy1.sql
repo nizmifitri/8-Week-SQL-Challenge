@@ -126,7 +126,6 @@ ON ds.product_id = dm.product_id
 INNER JOIN dannys_diner.members dmm
 ON ds.customer_id = dmm.customer_id)
 
-
 SELECT customer_id, SUM(points) AS "total points"
 FROM ext
 GROUP BY customer_id;

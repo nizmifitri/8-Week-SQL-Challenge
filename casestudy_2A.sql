@@ -1,3 +1,5 @@
+Tools : PostgreSQL
+
 -- Cleaning table customer_orders
 UPDATE pizza_runner.customer_orders
 SET extras = '' 

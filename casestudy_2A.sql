@@ -1,6 +1,6 @@
 Tools : PostgreSQL
-
--- Cleaning table customer_orders
+	
+------------Cleaning table customer_orders--------------
 UPDATE pizza_runner.customer_orders
 SET extras = '' 
 WHERE extras = 'null' OR extras IS NULL;
@@ -9,7 +9,7 @@ UPDATE pizza_runner.customer_orders
 SET exclusions = '' 
 WHERE exclusions = 'null' OR exclusions IS NULL;
 
--- Cleaning table runner_orders
+------------Cleaning table runner_orders-----------------
 
 -- Replacing entri null
 UPDATE pizza_runner.runner_orders
@@ -44,6 +44,10 @@ ORDER BY runner_orders.order_id;
 SELECT column_name, data_type
 FROM information_schema.columns
 WHERE table_name = 'customer_orders';
+
+/* --------------------
+   Case Study Questions
+   --------------------*/
 
 --How many pizzas were ordered?
 SELECT COUNT(order_id) AS "Amount of Pizzas Ordered"
@@ -129,7 +133,6 @@ ORDER BY co.order_id)
 SELECT SUM(count_extras) AS "Amount of pizzas delivered that had both exclusions and extras"
 FROM extras;
 
-
 --What was the total volume of pizzas ordered for each hour of the day?
 SELECT
 	EXTRACT(HOUR FROM order_time) AS "Hour Of The Day",
@@ -137,7 +140,6 @@ SELECT
 FROM pizza_runner.customer_orders
 GROUP BY EXTRACT(HOUR FROM order_time)
 ORDER BY EXTRACT(HOUR FROM order_time);
-
 
 --What was the volume of orders for each day of the week?
 SELECT
